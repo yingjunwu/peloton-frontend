@@ -113,11 +113,7 @@ AX_CHECK_SSL([], AC_MSG_ERROR([Please install ssl library : libssl-dev]))
 
 AC_CONFIG_FILES([Makefile
                  src/Makefile
-                 tests/Makefile
-                 tools/Makefile
                  ])
-
-AC_CONFIG_LINKS([tests/valgrind.supp:third_party/valgrind/valgrind.supp])
 
 # Check for protobuf
 PKG_CHECK_MODULES(PROTOBUF, protobuf >= 2.4.0)
@@ -159,19 +155,7 @@ AC_SUBST([DEBUG_CPPFLAGS])
 
 AC_CONFIG_LINKS([src/scan.cpp:src/postgres/backend/parser/scan.cpp])
 AC_CONFIG_LINKS([src/postgres/backend/parser/gram.cpp:src/postgres/backend/parser/gram.cpp])
-AC_CONFIG_LINKS([src/guc-file.cpp:src/postgres/backend/utils/misc/guc-file.cpp])
-AC_CONFIG_LINKS([src/postgres/backend/bootstrap/bootparse.cpp:src/postgres/backend/bootstrap/bootparse.cpp])
-AC_CONFIG_LINKS([src/postgres/backend/bootstrap/bootparse.y:src/postgres/backend/bootstrap/bootparse.y])
-AC_CONFIG_LINKS([src/postgres/backend/bootstrap/bootscanner.cpp:src/postgres/backend/bootstrap/bootscanner.cpp])
-AC_CONFIG_LINKS([src/postgres/backend/bootstrap/bootscanner.l:src/postgres/backend/bootstrap/bootscanner.l])
-AC_CONFIG_LINKS([src/postgres/backend/replication/repl_gram.cpp:src/postgres/backend/replication/repl_gram.cpp])
-AC_CONFIG_LINKS([src/postgres/backend/replication/repl_gram.y:src/postgres/backend/replication/repl_gram.y])
-AC_CONFIG_LINKS([src/postgres/backend/replication/repl_scanner.cpp:src/postgres/backend/replication/repl_scanner.cpp])
-AC_CONFIG_LINKS([src/postgres/backend/replication/repl_scanner.l:src/postgres/backend/replication/repl_scanner.l])
-AC_CONFIG_LINKS([src/postgres/backend/replication/fmgrtab.cpp:src/postgres/backend/utils/fmgrtab.cpp])
-AC_CONFIG_LINKS([src/postgres/backend/utils/sort/qsort_tuple.cpp:src/postgres/backend/utils/sort/qsort_tuple.cpp])
-AC_CONFIG_LINKS([tools/pg_psql/sql_help.cpp:tools/pg_psql/sql_help.cpp])
-AC_CONFIG_LINKS([tools/pg_psql/psqlscan.cpp:tools/pg_psql/psqlscan.cpp])
+
 
 CXXFLAGS="$CXXFLAGS -DPELOTON_PREFIX_DIR=\\\"${prefix}\\\""
 

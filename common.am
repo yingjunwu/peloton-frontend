@@ -7,7 +7,7 @@
 ## For the "check-code-coverage" target
 
 @CODE_COVERAGE_RULES@
-CODE_COVERAGE_IGNORE_PATTERN="/usr/*" "*/third_party/*" "*/test/*" "*/postgres/*" "*/build/*"
+CODE_COVERAGE_IGNORE_PATTERN="/usr/*" "*/postgres/*" "*/build/*"
 
 ## Global CFLAGS
 AM_CPPFLAGS = $(DEBUG_CPPFLAGS)

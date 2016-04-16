@@ -2,14 +2,9 @@
 AUTOMAKE_OPTIONS = foreign
 ACLOCAL_AMFLAGS	 = -I m4
 
-include $(top_srcdir)/doc/doxygen.am
-include $(top_srcdir)/third_party/gmock/Makefile.am
-
 # subdirectories of the project
 SUBDIRS = \
-		  src \
-		  tests \
-		  tools
+		  src
 
 # add files in the distribution
 EXTRA_DIST = bootstrap $(DX_CONFIG) doc
