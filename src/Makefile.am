@@ -15,14 +15,13 @@ BUILT_SOURCES =
 
 include $(srcdir)/postgres/backend/Makefile.am
 include $(srcdir)/postgres/common/Makefile.am
-include $(srcdir)/postgres/interfaces/Makefile.am
 include $(srcdir)/postgres/port/Makefile.am
 include $(srcdir)/postgres/timezone/Makefile.am
 include $(srcdir)/postgres/parser/Makefile.am
 
 bin_PROGRAMS = parser
 
-lib_LTLIBRARIES += libparser.la
+lib_LTLIBRARIES = libparser.la
 
 DEFAULT_INCLUDES =
 

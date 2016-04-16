@@ -35,6 +35,3 @@ postgres_backend_INCLUDES = \
 							-I$(srcdir)/postgres/include \
 							-I$(srcdir)/postgres/backend
 
-BUILT_SOURCES += postgres/backend/parser/gram.h
-AM_YFLAGS = -d 
-
