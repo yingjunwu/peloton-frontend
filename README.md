@@ -1,113 +1,40 @@
-# libpg_query [![Build Status](https://travis-ci.org/lfittl/libpg_query.svg?branch=master)](https://travis-ci.org/lfittl/libpg_query)
+[![Peloton Logo](http://db.cs.cmu.edu/wordpress/wp-content/uploads/2015/11/peloton.jpg)](http://pelotondb.org/)
 
-C library for accessing the PostgreSQL parser outside of the server.
+[![Build Status](http://jenkins.db.cs.cmu.edu:8080/job/Peloton/badge/icon?style=flat)](http://jenkins.db.cs.cmu.edu:8080/job/Peloton/)
+[![GitHub license](https://img.shields.io/badge/license-apache-blue.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Build Status](https://travis-ci.org/cmu-db/peloton.svg?branch=master)](https://travis-ci.org/cmu-db/peloton)
 
-This library uses the actual PostgreSQL server source to parse SQL queries and return the internal PostgreSQL parse tree.
+## What Is Peloton?
 
-Note that this is mostly intended as a base library for https://github.com/lfittl/pg_query (Ruby) and https://github.com/lfittl/pg_query.go (Go).
+Peloton is an in-memory DBMS designed for real-time analytics. It can handle both fast ACID transactions and complex analytical queries on the same database. 
 
-You can find further background to why a query's parse tree is useful here: https://pganalyze.com/blog/parse-postgresql-queries-in-ruby.html
+## What Problem Does Peloton Solve?
 
+The current trend is to use specialized systems that are optimized for only one of these workloads, and thus require an organization to maintain separate copies of the database. This adds additional cost to deploying a database application in terms of both storage and administration overhead. We present a hybrid DBMS architecture that efficiently supports varied workloads on the same database.
+
+## How Does Peloton Accomplish Its Goals?
+
+Our approach differs from previous methods in that we use a single execution engine that is oblivious to the storage layout of data without sacrificing the performance benefits of the specialized systems. This obviates the need to maintain separate copies of the database in multiple independent systems.
+
+For more details, please visit the [Peloton Wiki](https://github.com/cmu-db/peloton/wiki "Peloton Wiki") page.
 
 ## Installation
 
-```
-git clone -b 9.5-latest git://github.com/lfittl/libpg_query
-cd libpg_query
-make
-```
+Check out the [installation instructions](https://github.com/cmu-db/peloton/wiki/Installation).
 
-Due to compiling parts of PostgreSQL, running `make` will take a while. Expect up to 5 minutes.
+## Development / Contributing
 
-For a production build, its best to use `make DEBUG=0` and use a specific git tag (see CHANGELOG).
+Please look up the [contributing guide](https://github.com/cmu-db/peloton/blob/master/CONTRIBUTING.md#development) for details.
 
+## Issues
 
-## Usage: Parsing a query
+Before reporting a problem, check out this how to [file an issue](https://github.com/cmu-db/peloton/blob/master/CONTRIBUTING.md#file-an-issue) guide.
 
-A [full example](https://github.com/lfittl/libpg_query/blob/master/examples/simple.c) that parses a query looks like this:
+## Contributors
 
-```
-#include <pg_query.h>
-#include <stdio.h>
-
-int main() {
-  PgQueryParseResult result;
-
-  pg_query_init();
-
-  result = pg_query_parse("SELECT 1");
-
-  printf("%s\n", result.parse_tree);
-
-  pg_query_free_parse_result(result);
-}
-```
-
-Compile it like this:
-
-```
-cc -Ilibpg_query -Llibpg_query -lpg_query example.c
-```
-
-This will output:
-
-```
-[{"SELECT": {"distinctClause": null, "intoClause": null, "targetList": [{"RESTARGET": {"name": null, "indirection": null, "val": {"A_CONST": {"val": 1, "location": 7}}, "location": 7}}], "fromClause": null, "whereClause": null, "groupClause": null, "havingClause": null, "windowClause": null, "valuesLists": null, "sortClause": null, "limitOffset": null, "limitCount": null, "lockingClause": null, "withClause": null, "op": 0, "all": false, "larg": null, "rarg": null}}]
-```
-
-
-## Usage: Fingerprinting a query
-
-Fingerprinting allows you to identify similar queries that are different only because
-of the specific object that is being queried for (i.e. different object ids in the WHERE clause),
-or because of formatting.
-
-Example:
-
-```
-#include <pg_query.h>
-#include <stdio.h>
-
-int main() {
-  PgQueryFingerprintResult result;
-
-  pg_query_init();
-
-  result = pg_query_fingerprint("SELECT 1");
-
-  printf("%s\n", result.hexdigest);
-
-  pg_query_free_fingerprint_result(result);
-}
-```
-
-This will output:
-
-```
-8e1acac181c6d28f4a923392cf1c4eda49ee4cd2
-```
-
-See https://github.com/lfittl/libpg_query/wiki/Fingerprinting for the full fingerprinting rules.
-
-
-## Versions
-
-For stability, it is recommended you use individual tagged git versions, see CHANGELOG.
-
-Current `master` reflects a PostgreSQL base version of 9.4, with a legacy output format.
-
-New development is happening on `9.5-latest`, which will become `master` in the future.
-
-
-## Authors
-
-- [Lukas Fittl](mailto:lukas@fittl.com)
-
+[https://github.com/cmu-db/peloton/graphs/contributors](https://github.com/cmu-db/peloton/graphs/contributors)
 
 ## License
 
-Copyright (c) 2015, Lukas Fittl <lukas@fittl.com><br>
-libpg_query is licensed under the 3-clause BSD license, see LICENSE file for details.
-
-Query normalization code:<br>
-Copyright (c) 2008-2015, PostgreSQL Global Development Group
+Copyright (c) 2015-16 [CMU Database Group](http://db.cs.cmu.edu/)  
+Licensed under the [Apache License](LICENSE).
