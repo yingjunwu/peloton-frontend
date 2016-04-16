@@ -6,7 +6,9 @@
 ######################################################################
 
 postgres_port_FILES = \
-					  postgres/port/qsort.cpp
+					  postgres/port/qsort.cpp \
+					  postgres/port/pgstrcasecmp.cpp \
+					  postgres/port/chklocale.cpp
 
 postgres_port_INCLUDES = \
 						 -I$(srcdir)/postgres/include \

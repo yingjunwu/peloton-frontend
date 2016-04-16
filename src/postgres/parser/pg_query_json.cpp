@@ -243,7 +243,7 @@ _outNull(StringInfo str, const Value *node)
 	WRITE_NODE_TYPE("Null");
 }
 
-#include "pg_query_json_defs.c"
+#include "pg_query_json_defs.cpp"
 
 static void
 _outNode(StringInfo str, const void *obj)
@@ -283,7 +283,7 @@ _outNode(StringInfo str, const void *obj)
 				_outOidList(str, obj);
 				break;
 
-			#include "pg_query_json_conds.c"
+			#include "pg_query_json_conds.cpp"
 
 			default:
 				elog(WARNING, "could not dump unrecognized node type: %d",

@@ -1,4 +1,4 @@
-#include "pg_query.h"
+#include "parser/pg_query.h"
 #include "pg_query_internal.h"
 
 #include "postgres.h"
@@ -188,7 +188,7 @@ _fingerprintCopyTokens(FingerprintContext *source, FingerprintContext *target, c
   }
 }
 
-#include "pg_query_fingerprint_defs.c"
+#include "pg_query_fingerprint_defs.cpp"
 
 void
 _fingerprintNode(FingerprintContext *ctx, const void *obj, char *field_name)
@@ -221,7 +221,7 @@ _fingerprintNode(FingerprintContext *ctx, const void *obj, char *field_name)
 				_fingerprintBitString(ctx, obj);
 				break;
 
-			#include "pg_query_fingerprint_conds.c"
+			#include "pg_query_fingerprint_conds.cpp"
 
 			default:
 				elog(WARNING, "could not fingerprint unrecognized node type: %d",

@@ -4869,10 +4869,11 @@ _fingerprintCreatePolicyStmt(FingerprintContext *ctx, const CreatePolicyStmt *no
 {
   _fingerprintString(ctx, "CreatePolicyStmt");
 
-  if (node->cmd_name != NULL) {
-    _fingerprintString(ctx, "cmd_name");
-    _fingerprintString(ctx, node->cmd_name);
-  }
+  // TODO: Peloton changes
+  //if (node->cmd_name != NULL) {
+  //  _fingerprintString(ctx, "cmd_name");
+  //  _fingerprintString(ctx, node->cmd_name);
+  //}
 
 
   if (node->policy_name != NULL) {
@@ -5389,12 +5390,13 @@ _fingerprintRangeTableSample(FingerprintContext *ctx, const RangeTableSample *no
     _fingerprintCopyTokens(&subCtx, ctx, "args");
   }
   // Intentionally ignoring node->location for fingerprinting
-  if (node->method != NULL && node->method->length > 0) {
-    FingerprintContext subCtx;
-    _fingerprintInitForTokens(&subCtx);
-    _fingerprintNode(&subCtx, node->method, "method");
-    _fingerprintCopyTokens(&subCtx, ctx, "method");
-  }
+  // TODO: Peloton changes
+  //if (node->method != NULL && node->method->length > 0) {
+  //  FingerprintContext subCtx;
+  //  _fingerprintInitForTokens(&subCtx);
+  //  _fingerprintNode(&subCtx, node->method, "method");
+  //  _fingerprintCopyTokens(&subCtx, ctx, "method");
+  //}
   if (node->relation != NULL) {
     FingerprintContext subCtx;
     _fingerprintInitForTokens(&subCtx);
@@ -6042,18 +6044,19 @@ _fingerprintTableSampleClause(FingerprintContext *ctx, const TableSampleClause *
     _fingerprintNode(&subCtx, node->args, "args");
     _fingerprintCopyTokens(&subCtx, ctx, "args");
   }
-  if (node->repeatable != NULL) {
-    FingerprintContext subCtx;
-    _fingerprintInitForTokens(&subCtx);
-    _fingerprintNode(&subCtx, node->repeatable, "repeatable");
-    _fingerprintCopyTokens(&subCtx, ctx, "repeatable");
-  }
-  if (node->tsmhandler != 0) {
-    char buffer[50];
-    sprintf(buffer, "%d", node->tsmhandler);
-    _fingerprintString(ctx, "tsmhandler");
-    _fingerprintString(ctx, buffer);
-  }
+  // TODO: Peloton changes
+  //if (node->repeatable != NULL) {
+  //  FingerprintContext subCtx;
+  //  _fingerprintInitForTokens(&subCtx);
+  //  _fingerprintNode(&subCtx, node->repeatable, "repeatable");
+  // _fingerprintCopyTokens(&subCtx, ctx, "repeatable");
+  //}
+  //if (node->tsmhandler != 0) {
+  //  char buffer[50];
+  //  sprintf(buffer, "%d", node->tsmhandler);
+  //  _fingerprintString(ctx, "tsmhandler");
+  //  _fingerprintString(ctx, buffer);
+  //}
 
 }
 
@@ -6066,18 +6069,19 @@ _fingerprintWithCheckOption(FingerprintContext *ctx, const WithCheckOption *node
     _fingerprintString(ctx, "true");
   }
 
-  if (node->kind != 0) {
-    char buffer[50];
-    sprintf(buffer, "%d", node->kind);
-    _fingerprintString(ctx, "kind");
-    _fingerprintString(ctx, buffer);
-  }
+  // TODO: Peloton changes
+  //if (node->kind != 0) {
+  //  char buffer[50];
+  //  sprintf(buffer, "%d", node->kind);
+  //  _fingerprintString(ctx, "kind");
+  //  _fingerprintString(ctx, buffer);
+  //}
 
 
-  if (node->polname != NULL) {
-    _fingerprintString(ctx, "polname");
-    _fingerprintString(ctx, node->polname);
-  }
+  //if (node->polname != NULL) {
+  //  _fingerprintString(ctx, "polname");
+  //  _fingerprintString(ctx, node->polname);
+  //}
 
   if (node->qual != NULL) {
     FingerprintContext subCtx;

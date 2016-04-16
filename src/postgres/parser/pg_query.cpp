@@ -1,4 +1,4 @@
-#include "pg_query.h"
+#include "parser/pg_query.h"
 #include "pg_query_internal.h"
 #include <mb/pg_wchar.h>
 

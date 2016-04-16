@@ -18,6 +18,7 @@ include $(srcdir)/postgres/common/Makefile.am
 include $(srcdir)/postgres/interfaces/Makefile.am
 include $(srcdir)/postgres/port/Makefile.am
 include $(srcdir)/postgres/timezone/Makefile.am
+include $(srcdir)/postgres/parser/Makefile.am
 
 bin_PROGRAMS = parser
 
@@ -33,7 +34,8 @@ libparser_la_SOURCES = \
 			$(postgres_backend_FILES) \
 			$(postgres_common_FILES) \
 			$(postgres_port_FILES) \
-			$(postgres_timezone_FILES)
+			$(postgres_timezone_FILES) \
+			$(postgres_parser_FILES)		
 
 libparser_la_CPPFLAGS = $(AM_CPPFLAGS) \
 						 -I$(srcdir)/postgres/include \
@@ -54,7 +56,7 @@ libparser_la_LDFLAGS = -lprotobuf
 # PARSER
 ######################################################################
 
-parser_SOURCES = parser.cpp
+parser_SOURCES = main.cpp
 parser_LDFLAGS = 
 parser_CPPFLAGS = -I. -I$(top_srcdir)/src -I.. $(postgres_common_INCLUDES) $(AM_CPPFLAGS)
 

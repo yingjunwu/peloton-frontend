@@ -8,6 +8,7 @@ postgres_backend_FILES = \
 						 postgres/backend/libpq/pqformat.cpp \
 						 postgres/backend/utils/mb/encnames.cpp \
 						 postgres/backend/utils/mb/mbutils.cpp \
+						 postgres/backend/utils/mb/wchar.cpp \
 						 postgres/backend/utils/mmgr/aset.cpp \
 						 postgres/backend/utils/mmgr/mcxt.cpp \
 						 postgres/backend/utils/error/assert.cpp \

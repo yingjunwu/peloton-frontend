@@ -3,16 +3,17 @@
 #include "postgres.h"
 
 /* src/backend/postmaster/postmaster.c */
-bool ClientAuthInProgress = false;
-bool redirection_done = false;
+// TODO: Peloton Changes
+thread_local bool ClientAuthInProgress = false;
+thread_local bool redirection_done = false;
 
 /* src/backend/postmaster/syslogger.c */
 bool am_syslogger = false;
 
 /* src/backend/tcop/postgres.c */
 #include "tcop/dest.h"
-const char *debug_query_string;
-CommandDest whereToSendOutput = DestDebug;
+thread_local const char *debug_query_string;
+thread_local CommandDest whereToSendOutput = DestDebug;
 
 /* src/backend/utils/misc/guc.c */
 char *application_name;
@@ -24,10 +25,12 @@ bool assert_enabled = true;
 
 /* src/backend/storage/lmgr/proc.c */
 #include "storage/proc.h"
-PGPROC *MyProc = NULL;
+// TODO: Peloton changes
+thread_local PGPROC *MyProc = NULL;
 
 /* src/backend/storage/ipc/ipc.c */
-bool proc_exit_inprogress = false;
+// TODO: Peloton changes
+thread_local bool proc_exit_inprogress = false;
 
 /* src/backend/tcop/postgres.c */
 #include "miscadmin.h"

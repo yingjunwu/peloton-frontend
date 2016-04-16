@@ -1715,7 +1715,8 @@ _outCreatePolicyStmt(StringInfo str, const CreatePolicyStmt *node)
 
   WRITE_STRING_FIELD(policy_name);
   WRITE_NODE_PTR_FIELD(table);
-  WRITE_STRING_FIELD(cmd_name);
+  // TODO: Peloton changes
+  //WRITE_STRING_FIELD(cmd_name);
   WRITE_NODE_PTR_FIELD(roles);
   WRITE_NODE_PTR_FIELD(qual);
   WRITE_NODE_PTR_FIELD(with_check);
@@ -1935,7 +1936,8 @@ _outRangeTableSample(StringInfo str, const RangeTableSample *node)
   WRITE_NODE_PTR_FIELD(method);
   WRITE_NODE_PTR_FIELD(args);
   WRITE_NODE_PTR_FIELD(repeatable);
-  WRITE_INT_FIELD(location);
+  // TODO: Peloton changes
+  //WRITE_INT_FIELD(location);
 }
 
 static void
@@ -2086,7 +2088,8 @@ _outTableSampleClause(StringInfo str, const TableSampleClause *node)
 {
   WRITE_NODE_TYPE("TableSampleClause");
 
-  WRITE_UINT_FIELD(tsmhandler);
+  // TODO: Peloton changes
+  //WRITE_UINT_FIELD(tsmhandler);
   WRITE_NODE_PTR_FIELD(args);
   WRITE_NODE_PTR_FIELD(repeatable);
 }
@@ -2098,7 +2101,8 @@ _outWithCheckOption(StringInfo str, const WithCheckOption *node)
 
   WRITE_ENUM_FIELD(kind, WCOKind);
   WRITE_STRING_FIELD(relname);
-  WRITE_STRING_FIELD(polname);
+  // TODO: Peloton changes
+  //WRITE_STRING_FIELD(polname);
   WRITE_NODE_PTR_FIELD(qual);
   WRITE_BOOL_FIELD(cascaded);
 }
