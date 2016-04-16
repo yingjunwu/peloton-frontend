@@ -16,7 +16,6 @@ BUILT_SOURCES =
 include $(srcdir)/postgres/backend/Makefile.am
 include $(srcdir)/postgres/common/Makefile.am
 include $(srcdir)/postgres/port/Makefile.am
-include $(srcdir)/postgres/timezone/Makefile.am
 include $(srcdir)/postgres/parser/Makefile.am
 
 bin_PROGRAMS = parser
